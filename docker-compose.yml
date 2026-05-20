@@ -3,11 +3,11 @@ version: '3'
 services:
 
   frontend:
-    image: YOUR_DOCKERHUB_USERNAME/frontend-app:latest
+    image: bhavyatank13/frontend-app:latest
     ports:
       - "3000:3000"
 
   backend:
-    image: YOUR_DOCKERHUB_USERNAME/backend-app:latest
+    image: bhavyatank13/backend-app:latest
     ports:
       - "5000:5000"
