@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send('Frontend Running Version 1 updated');
+    res.send('Frontend Running Version 1 updated with the build number');
 });
 
 app.listen(3000, () => {
