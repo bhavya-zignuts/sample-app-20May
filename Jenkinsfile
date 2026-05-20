@@ -9,7 +9,6 @@ pipeline {
     }
 
     stages {
-
         stage('Clone Repository') {
             steps {
                 git branch: 'main',
@@ -60,6 +59,8 @@ pipeline {
                         docker compose pull
 
                         docker compose down
+                        docker rmi bhavyatank13/frontend-app:$BUILD_NUMBER -f || true
+                        docker rmi bhavyatank13/backend-app:$BUILD_NUMBER -f || true
 
                         docker compose up -d
 
