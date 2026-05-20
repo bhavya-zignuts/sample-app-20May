@@ -3,11 +3,11 @@ version: '3'
 services:
 
   frontend:
-    image: bhavyatank13/frontend-app:latest
+    image: bhavyatank13/frontend-app:$BUILD_NUMBER
     ports:
       - "3000:3000"
 
   backend:
-    image: bhavyatank13/backend-app:latest
+    image: bhavyatank13/backend-app:$BUILD_NUMBER
     ports:
       - "5000:5000"
