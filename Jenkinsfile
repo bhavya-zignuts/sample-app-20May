@@ -3,14 +3,13 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')
-        FRONTEND_IMAGE = "bhavyatank13/frontend-app"
-        BACKEND_IMAGE = "bhavyatank13/backend-app"
-        APP_SERVER = "ubuntu@13.126.194.216"
+        FRONTEND_IMAGE = 'bhavyatank13/frontend-app'
+        BACKEND_IMAGE = 'bhavyatank13/backend-app'
+        APP_SERVER = 'ubuntu@13.126.194.216'
     }
 
     stages {
-
-       stage('Clone Repository') {
+        stage('Clone Repository') {
             steps {
                 git branch: 'main',
                 url: 'https://github.com/bhavya-zignuts/sample-app-20May.git'
@@ -52,21 +51,19 @@ pipeline {
         stage('Deploy to App Server') {
             steps {
                 sshagent(['app-server-ssh']) {
-
                     sh '''
-                    ssh -o StrictHostKeyChecking=no $APP_SERVER << EOF
+ssh -o StrictHostKeyChecking=no $APP_SERVER << EOF
+cd app
 
-                    cd app
+docker compose pull
 
-                    docker compose pull
+docker compose down
 
-                    docker compose down
+docker compose up -d
 
-                    docker compose up -d
-
-                    docker image prune -f
-                    EOF
-                    '''
+docker image prune -f
+EOF
+'''
                 }
             }
         }
