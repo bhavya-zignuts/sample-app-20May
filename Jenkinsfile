@@ -10,9 +10,10 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
+       stage('Clone Repository') {
             steps {
-                git 'https://github.com/bhavya-zignuts/sample-app-20May.git'
+                git branch: 'main',
+                url: 'https://github.com/bhavya-zignuts/sample-app-20May.git'
             }
         }
 
